@@ -38,7 +38,7 @@ class RegisterService
     }
 
     /**
-     * Valida um número de CPF.
+     * Valida um número de CPF
      *
      * @param  string  $cpf
      * @return bool
