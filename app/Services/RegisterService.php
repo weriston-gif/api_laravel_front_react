@@ -13,7 +13,7 @@ class RegisterService
      * @param array $userData Dados do usuário a serem registrados
      * @return bool True se o registro for bem-sucedido, false caso contrário
      */
-    public function registerUser(array $userData): bool
+    public function store(array $userData): bool
     {
         try {
             $newRegister = new Register($userData);
@@ -24,7 +24,18 @@ class RegisterService
             return false;
         }
     }
-    
+
+    public function update(int $id, array $userData): bool
+    {
+        try {
+            $register = Register::findOrFail($id);
+            $register->update($userData);
+
+            return true;
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
 
     /**
      * Valida um número de CPF.

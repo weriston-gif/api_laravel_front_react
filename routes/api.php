@@ -14,10 +14,11 @@ Route::get('/', function () {
 });
 Route::post('/register', [RegisterController::class, 'store']);
 Route::patch('/register/{id}', [RegisterController::class, 'update']);
+Route::delete('/register/{id}', [RegisterController::class, 'destroy']);
+
 Route::get('/register/{id}', function (string $id) {
     return new RegisterResource(Register::findOrFail($id));
 });
-
 Route::get('/register-list', function () {
   $registers = Register::paginate();
   return RegisterResource::collection($registers);

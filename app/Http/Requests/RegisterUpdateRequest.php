@@ -15,6 +15,8 @@ class RegisterUpdateRequest extends FormRequest
      */
     public function rules(): array
     {
+        $registerId = $this->route('id'); // Obtém o ID do registro sendo atualizado da rota
+        
         return [
             'name' => [
                 'string',
@@ -23,10 +25,10 @@ class RegisterUpdateRequest extends FormRequest
             ],
             'email' => [
                 'email', 'max:255',
-                Rule::unique(Register::class)->ignore($this->user()->id),
+                Rule::unique(Register::class)->ignore($registerId, 'id'),
             ],
             'cpf' => [
-                Rule::unique(Register::class)->ignore($this->user()->id),
+                Rule::unique(Register::class)->ignore($registerId, 'id'),
             ],
             'data_nasc' => 'date_format:d/m/Y',
             'gender' => 'in:Masculino,Feminino,Outros',
