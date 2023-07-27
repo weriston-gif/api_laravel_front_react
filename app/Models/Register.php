@@ -22,8 +22,6 @@ class Register extends Authenticatable
         'name',
         'data_nasc',
         'email',
-        'gender'
+        'gender',
     ];
-
-   
 }

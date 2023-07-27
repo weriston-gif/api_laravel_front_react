@@ -6,11 +6,10 @@ use App\Models\Register;
 
 class RegisterService
 {
-
     /**
      * Registra um novo usuário.
      *
-     * @param array $userData Dados do usuário a serem registrados
+     * @param  array  $userData Dados do usuário a serem registrados
      * @return bool True se o registro for bem-sucedido, false caso contrário
      */
     public function store(array $userData): bool
@@ -18,7 +17,7 @@ class RegisterService
         try {
             $newRegister = new Register($userData);
             $newRegister->save();
-    
+
             return true;
         } catch (\Exception $e) {
             return false;
@@ -39,9 +38,6 @@ class RegisterService
 
     /**
      * Valida um número de CPF
-     *
-     * @param  string  $cpf
-     * @return bool
      */
     public function validarCPF(string $cpf): bool
     {

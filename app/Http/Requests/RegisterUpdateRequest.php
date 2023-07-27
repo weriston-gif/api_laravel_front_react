@@ -16,7 +16,7 @@ class RegisterUpdateRequest extends FormRequest
     public function rules(): array
     {
         $registerId = $this->route('id'); // Obtém o ID do registro sendo atualizado da rota
-        
+
         return [
             'name' => [
                 'string',

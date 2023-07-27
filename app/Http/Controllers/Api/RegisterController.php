@@ -5,17 +5,13 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\RegisterUpdateRequest;
-use App\Http\Resources\RegisterResource;
 use App\Models\Register;
-use App\Models\User;
 use App\Services\RegisterService;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
 class RegisterController extends Controller
 {
-
     protected $registerService;
 
     public function __construct(RegisterService $registerService)
@@ -47,7 +43,7 @@ class RegisterController extends Controller
         try {
             $cpf = $request->cpf;
 
-            if (!$this->registerService->validarCPF($cpf)) {
+            if (! $this->registerService->validarCPF($cpf)) {
                 return response()->json(['errors' => ['cpf' => 'CPF inválido']], 422);
             }
             if ($this->registerService->store($request->all())) {
@@ -87,7 +83,7 @@ class RegisterController extends Controller
 
             $cpf = $request->cpf;
 
-            if (!$this->registerService->validarCPF($cpf)) {
+            if (! $this->registerService->validarCPF($cpf)) {
                 return response()->json(['errors' => ['cpf' => 'CPF inválido']], 422);
             }
             if ($this->registerService->update($id, $request->all())) {

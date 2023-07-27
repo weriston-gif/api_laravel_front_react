@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return response()->json([
         'api_name' => 'Laravel API.',
-        'api_version' => '1.0.1'
+        'api_version' => '1.0.1',
     ]);
 });
 Route::post('/register', [RegisterController::class, 'store']);
@@ -20,8 +20,9 @@ Route::get('/register/{id}', function (string $id) {
     return new RegisterResource(Register::findOrFail($id));
 });
 Route::get('/register-list', function () {
-  $registers = Register::paginate();
-  return RegisterResource::collection($registers);
+    $registers = Register::paginate();
+
+    return RegisterResource::collection($registers);
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
