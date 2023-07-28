@@ -30,7 +30,6 @@ class RegisterUpdateRequest extends FormRequest
             'cpf' => [
                 Rule::unique(Register::class)->ignore($registerId, 'id'),
             ],
-            'data_nasc' => 'date_format:d/m/Y',
             'gender' => 'in:Masculino,Feminino,Outros',
         ];
     }

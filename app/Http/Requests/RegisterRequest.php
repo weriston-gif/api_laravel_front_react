@@ -38,7 +38,7 @@ class RegisterRequest extends FormRequest
                 Rule::unique('registers', 'cpf'),
                 'required',
             ],
-            'data_nasc' => 'required|date_format:d/m/Y',
+            'data_nasc' => 'required',
             'gender' => 'required|in:Masculino,Feminino,Outros',
         ];
     }
